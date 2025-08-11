@@ -2,57 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Premium Portfolio Design System - Luxury, Soft, Elegant */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core Brand Colors - Warm Neutral Palette */
+    --background: 36 14% 97%; /* Off-white warm grey #F7F6F5 */
+    --foreground: 20 7% 11%; /* Deep charcoal #1C1B1B */
+    
+    /* Surface Colors */
+    --surface: 36 18% 94%; /* Soft warm beige #F0EDEB */
+    --surface-elevated: 0 0% 99%; /* Pearlescent white */
+    
+    /* Text Hierarchy */
+    --text-primary: 20 7% 11%; /* Deep charcoal #1C1B1B */
+    --text-secondary: 30 4% 48%; /* Muted taupe #7D7774 */
+    --text-muted: 30 6% 65%; /* Lighter taupe */
+    
+    /* Luxury Accents */
+    --accent-gold: 36 42% 50%; /* Deep muted gold #B8894A */
+    --accent-blue: 216 20% 50%; /* Slate blue #6B7C93 */
+    
+    /* Interactive States */
+    --hover-surface: 36 25% 91%; /* Deeper warm beige */
+    --focus-ring: 36 42% 50%; /* Gold focus ring */
+    
+    /* Gradients & Effects */
+    --gradient-hero: linear-gradient(135deg, hsl(36 18% 94%), hsl(0 0% 99%));
+    --gradient-gold: linear-gradient(135deg, hsl(36 42% 50%), hsl(36 52% 60%));
+    --gradient-overlay: linear-gradient(180deg, hsla(36 18% 94% / 0.95), hsla(36 18% 94% / 0.8));
+    
+    /* Shadows - Soft & Subtle */
+    --shadow-soft: 0 2px 16px hsla(20 7% 11% / 0.04);
+    --shadow-medium: 0 4px 24px hsla(20 7% 11% / 0.06);
+    --shadow-large: 0 8px 40px hsla(20 7% 11% / 0.08);
+    
+    /* Component-specific tokens */
+    --card: var(--surface-elevated);
+    --card-foreground: var(--text-primary);
+    --popover: var(--surface-elevated);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--accent-gold);
+    --primary-foreground: var(--surface-elevated);
+    --secondary: var(--surface);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--surface);
+    --muted-foreground: var(--text-secondary);
+    --accent: var(--accent-blue);
+    --accent-foreground: var(--surface-elevated);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--surface-elevated);
+    --border: 36 25% 88%; /* Subtle warm border */
+    --input: var(--surface);
+    --ring: var(--focus-ring);
+    --radius: 0.75rem; /* Slightly larger radius for elegance */
+    
+    /* Typography Scale */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Fluid Typography */
+    --text-hero: clamp(3rem, 8vw, 7.5rem);
+    --text-xl: clamp(1.75rem, 4vw, 3rem);
+    --text-lg: clamp(1.25rem, 2.5vw, 1.75rem);
+    --text-base: 1rem;
+    --text-sm: 0.875rem;
+    --text-xs: 0.8125rem;
+    
+    /* Animation Timing */
+    --duration-fast: 0.2s;
+    --duration-medium: 0.4s;
+    --duration-slow: 0.6s;
+    --ease-elegant: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
@@ -100,6 +122,129 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-optical-sizing: auto;
+  }
+  
+  /* Typography Classes */
+  .font-serif {
+    font-family: var(--font-serif);
+    font-feature-settings: "liga", "kern";
+  }
+  
+  .font-sans {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Fluid Typography Scale */
+  .text-hero {
+    font-size: var(--text-hero);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  
+  .text-display {
+    font-size: var(--text-xl);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  
+  .text-heading {
+    font-size: var(--text-lg);
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  /* Premium Button Variants */
+  .btn-hero {
+    @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-medium tracking-wide;
+    @apply bg-primary text-primary-foreground;
+    @apply transition-all duration-300 ease-[var(--ease-elegant)];
+    @apply hover:scale-[1.02] hover:shadow-[var(--shadow-medium)];
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    background: var(--gradient-gold);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-large), 0 0 0 1px hsla(var(--accent-gold) / 0.2);
+  }
+  
+  /* Surface Cards */
+  .surface-card {
+    background: var(--gradient-hero);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius);
+  }
+  
+  /* Elegant Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s var(--ease-elegant) forwards;
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s var(--ease-elegant) forwards;
+    opacity: 0;
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft 0.8s var(--ease-elegant) forwards;
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+
+@layer utilities {
+  /* Custom Gradient Utilities */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .bg-gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+  
+  /* Shadow Utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
